@@ -19,7 +19,7 @@ jobs:
         npm install
         npx webpack
         mkdir public
-        cp ./dist ./public
+        cp -r ./dist ./public
         cp index.html ./public
     - name: Deploy
       uses: crazy-max/ghaction-github-pages@v1
