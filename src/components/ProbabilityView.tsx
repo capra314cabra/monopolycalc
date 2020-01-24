@@ -21,6 +21,12 @@ export class ProbabilityView extends React.Component<ProbabilityViewProps, Proba
         };
     }
 
+    onClicked = () => {
+        this.setState({
+            showDetail: !this.state.showDetail
+        });
+    };
+
     render() {
         let color = this.getColor(this.props.place.color);
         let contentDesign: React.CSSProperties = {
@@ -32,12 +38,28 @@ export class ProbabilityView extends React.Component<ProbabilityViewProps, Proba
             padding: "10px"
         };
         let prob = this.props.simulateResult.map(value => value.probability).reduce((sum, value) => sum + value, 0);
-        return (
-            <div style={contentDesign}>
-                <h3>{this.props.place.name}</h3>
-                <p>{(100. * prob).toFixed(3)}%</p>
-            </div>
-        );
+        if (this.state.showDetail) {
+            return (
+                <div style={contentDesign}>
+                    <h3 onClick={this.onClicked}>{this.props.place.name}</h3>
+                    <p>{(100. * prob).toFixed(3)}%</p>
+                    <h4>Detail</h4>
+                    {
+                        this.props.simulateResult.map((index) => {
+                            return <p>{index.places.map(index => index.name).join("\u2192")} {(100. * index.probability).toFixed(3)}%</p>;
+                        })
+                    }
+                </div>
+            );
+        }
+        else {
+            return (
+                <div style={contentDesign}>
+                    <h3 onClick={this.onClicked}>{this.props.place.name}</h3>
+                    <p>{(100. * prob).toFixed(3)}%</p>
+                </div>
+            );
+        }
     }
 
     private getColor(color: MonopolyColor): string {
