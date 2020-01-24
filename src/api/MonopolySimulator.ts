@@ -42,7 +42,10 @@ export class MonopolySimulator {
                 result.push(newProb);
             }
             for (let dice of this.diceProb) {
-                if (dice.oneMoreTurn && prob.turn < 2) {
+                if (dice.oneMoreTurn) {
+                    if(prob.turn == 2) {
+                        continue;
+                    }
                     let newProb = this.clone(prob);
                     let goTo = this.getPlace(lastLand.name, dice.number);
                     newProb.places.push(goTo);
@@ -83,7 +86,6 @@ export class MonopolySimulator {
     private merge(probs: IMonopolyProbability[]): IMonopolyProbability[] {
         let places = new Map<string, number>();
         for (let prob of probs) {
-            console.log(prob);
             if (places.has(JSON.stringify(prob.places))) {
                 places.set(JSON.stringify(prob.places), places.get(JSON.stringify(prob.places)) + prob.probability);
             }
