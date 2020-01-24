@@ -39,7 +39,7 @@ export class MonopolyPlaces {
             { name: "Community Chest 3", color: undefined },
             { name: "Pennsylvania Avenue", color: "Green" },
             { name: "Short Line", color: "Railroad" },
-            { name: "Chance", color: undefined },
+            { name: "Chance 3", color: undefined },
             { name: "Park Place", color: "Dark Blue" },
             { name: "Luxury Tax", color: undefined },
             { name: "Boardwalk", color: "Dark Blue" },
