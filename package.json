@@ -27,7 +27,7 @@
     "webpack-cli": "^3.3.10"
   },
   "dependencies": {
-    "react": "^16.12.0",
+    "react": "^16.13.0",
     "react-dom": "^16.12.0",
     "react-select": "^3.0.8",
     "ts-data.stack": "^1.0.6"
