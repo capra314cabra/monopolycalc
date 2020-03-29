@@ -1,7 +1,6 @@
 import * as React from "react";
-import * as ReactDOM from "react-dom";
 import Select from "react-select";
-import { ValueType, OptionsType } from "react-select/src/types";
+import { ValueType } from "react-select/src/types";
 
 import { MonopolyPlaces } from "../api/data/MonopolyPlaces";
 
