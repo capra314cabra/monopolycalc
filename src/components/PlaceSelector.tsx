@@ -1,7 +1,6 @@
 import * as React from "react";
-import * as ReactDOM from "react-dom";
 import Select from "react-select";
-import { ValueType, OptionsType } from "react-select/src/types";
+import { ValueType } from "react-select/src/types";
 
 import { MonopolyPlaces } from "../api/data/MonopolyPlaces";
 
@@ -31,9 +30,12 @@ export class PlaceSelector extends React.Component<PlaceSelectorProps, PlaceSele
     }
 
     render() {
-        let options = new MonopolyPlaces().get().map((index) => {
-            return { value: index.name, label: index.name }
-        });
+        let placeInfos = new MonopolyPlaces().get();
+
+        let options = placeInfos
+            .map((index) => {
+                return { value: index.name, label: index.name }
+            });
         let selected = this.state.selectedPlace;
         let onSelectChanged = this.onSelectChanged;
         let element =

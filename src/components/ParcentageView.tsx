@@ -1,5 +1,4 @@
 import * as React from "react";
-import * as ReactDOM from "react-dom";
 import { PlaceSelector } from "./PlaceSelector";
 import { MonopolySimulator } from "../api/MonopolySimulator";
 import { IMonopolyProbability } from "../api/@types/MonopolyProbability";
@@ -42,7 +41,8 @@ export class ParcentageView extends React.Component<ParcentageViewProps, Parcent
     }
 
     render() {
-        let placesManager = new MonopolyPlaces();
+        let placeInfos = new MonopolyPlaces().get();
+
         let places = new Map<string, IMonopolyProbability[]>();
         for (let prob of this.state.result) {
             for (let place of prob.places) {
@@ -59,9 +59,15 @@ export class ParcentageView extends React.Component<ParcentageViewProps, Parcent
 
         let placesArray: { prob: number, place: IMonopolyPlace, simulateResult: IMonopolyProbability[] }[] = [];
         for (let place of places) {
-            let placeItem = placesManager.get().find(x => x.name == place[0]);
-            let probabilitiesSum = place[1].map(value => value.probability).reduce((sum, value) => sum + value, 0);
-            placesArray.push({ prob: probabilitiesSum, place: placeItem, simulateResult: place[1] });
+            let place_name = place[0];
+            let place_prob = place[1];
+
+            let placeItem = placeInfos
+                .find(x => x.name == place_name);
+            let probabilitiesSum = place_prob
+                .map(value => value.probability)
+                .reduce((sum, value) => sum + value, 0);
+            placesArray.push({ prob: probabilitiesSum, place: placeItem, simulateResult: place_prob });
         }
         placesArray.sort((a, b) => b.prob - a.prob);
 
