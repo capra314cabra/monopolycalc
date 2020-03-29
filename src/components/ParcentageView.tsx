@@ -1,5 +1,4 @@
 import * as React from "react";
-import * as ReactDOM from "react-dom";
 import { PlaceSelector } from "./PlaceSelector";
 import { MonopolySimulator } from "../api/MonopolySimulator";
 import { IMonopolyProbability } from "../api/@types/MonopolyProbability";
