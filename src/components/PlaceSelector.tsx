@@ -30,9 +30,12 @@ export class PlaceSelector extends React.Component<PlaceSelectorProps, PlaceSele
     }
 
     render() {
-        let options = new MonopolyPlaces().get().map((index) => {
-            return { value: index.name, label: index.name }
-        });
+        let placeInfos = new MonopolyPlaces().get();
+
+        let options = placeInfos
+            .map((index) => {
+                return { value: index.name, label: index.name }
+            });
         let selected = this.state.selectedPlace;
         let onSelectChanged = this.onSelectChanged;
         let element =
