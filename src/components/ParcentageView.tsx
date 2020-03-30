@@ -33,11 +33,16 @@ export class ParcentageView extends React.Component<ParcentageViewProps, Parcent
     }
 
     onSimulateClicked = () => {
-        let probabilities = new MonopolySimulator().simulate(this.state.selectedPlace);
-        this.setState({
-            selectedPlace: this.state.selectedPlace,
-            result: probabilities
-        });
+        if (this.state.selectedPlace) {
+            let probabilities = new MonopolySimulator().simulate(this.state.selectedPlace);
+            this.setState({
+                selectedPlace: this.state.selectedPlace,
+                result: probabilities
+            });
+        }
+        else {
+            window.alert("You have to provide a place name.");
+        }
     }
 
     render() {
