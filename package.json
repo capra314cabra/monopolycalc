@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/capra314cabra/monopolycalc#readme",
   "devDependencies": {
-    "@types/react": "^16.9.46",
+    "@types/react": "^16.9.47",
     "@types/react-dom": "^16.9.8",
     "@types/react-select": "^3.0.19",
     "source-map-loader": "^1.0.2",
